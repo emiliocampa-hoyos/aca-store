@@ -8,7 +8,34 @@
    
 </head>
 <body>
-     <script src="products.js"></script>    
-    <script src="index.js"></script>   
+    <script src="products.js"></script>    
+    <script src="index.js"></script>  
+
+    
+
+    <div id="viewCartId">
+        <button onclick="alert('view the cart')">View Cart</button>
+    </div>    
+
+    <div id="searchBarDivId">
+        <b>Search for an Item:</b>
+        <input type="text" name="searchBar" id="searchBarId">
+        <button onclick="searchForItem()">Search</button>
+    </div>
+
+    <div id="productNamesListId">
+        <script>
+            var productNamesDOM = document.getElementById('productNamesListId');
+            productNamesDOM.innerHTML = getListOfProductNames();
+            
+
+            function searchForItemView() {
+                var toLookFor = document.getElementById('searchBarId').innerText;
+                searchforItem(toLookFor);
+            }
+        </script>
+    </div>
+
+    
 </body>
 </html>
