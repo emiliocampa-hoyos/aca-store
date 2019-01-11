@@ -20,18 +20,41 @@
     <div id="searchBarDivId">
         <b>Search for an Item:</b>
         <input type="text" name="searchBar" id="searchBarId">
-        <button onclick="searchForItem()">Search</button>
+        <button onclick="searchForItemView()">Search</button>
     </div>
 
-    <div id="productNamesListId">
+    <div id="producgit statustNamesListId">
         <script>
             var productNamesDOM = document.getElementById('productNamesListId');
             productNamesDOM.innerHTML = getListOfProductNames();
             
 
             function searchForItemView() {
-                var toLookFor = document.getElementById('searchBarId').innerText;
-                searchforItem(toLookFor);
+                var toLookFor = document.getElementById('searchBarId').value;
+                renderItems(GetItems(toLookFor));
+            }
+
+            function renderItems(productsToRender) {
+                console.log("About to render these: " + productsToRender.name);
+
+
+                var productNamesDOM = document.getElementById('productNamesListId');
+                                
+                var startTag = "<ul>";
+                var endTag = "</ul>";
+
+                var elements = "";
+                for (var i = 0; i < productsToRender.length; i++) {
+                    elements += "<li> " + productsToRender[i].name + " <button onclick="+'alert()'+">Add To Cart?</button> "
+                            + " <ul>" 
+                            + "<li> Rating: " + productsToRender[i].rating + " </li>"
+                            + "<li> Reviews: " + productsToRender[i].reviews.length + " </li>"
+                            + "<li> Price: " + productsToRender[i].price + " </li>" 
+                            + " </ul>" 
+                            + " </li>"
+                }
+                
+                productNamesDOM.innerHTML = startTag + elements + endTag; 
             }
         </script>
     </div>

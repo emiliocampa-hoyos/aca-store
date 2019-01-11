@@ -1,12 +1,5 @@
 
 
-var listOfProducts;
-
-// Print the list of available products
-function getProducts() {  
-    return products;
-}
-
 
 function getListOfProductNames() {
     var startTag = "<ul>";
@@ -26,24 +19,20 @@ function getListOfProductNames() {
     return startTag + elements + endTag; 
 }
 
-/*
-function getListOfProductNames(filteredListOfProducts) {
-    var startTag = "<ul>";
-    var endTag = "</ul>";
 
-    var elements = "";
-    for (var i = 0; i < filteredListOfProducts.length; i++) {
-        elements += "<li> " + filteredListOfProducts[i].name + " <button onclick="+'alert()'+">Add To Cart?</button> "
-                 + " <ul>" 
-                 + "<li> Rating: " + filteredListOfProducts[i].rating + " </li>"
-                 + "<li> Reviews: " + filteredListOfProducts[i].reviews.length + " </li>"
-                 + "<li> Price: " + filteredListOfProducts[i].price + " </li>" 
-                 + " </ul>" 
-                 + " </li>"
+function GetItems(toLookFor) {
+    let toReturn = [];
+    let product;
+
+    for (var i = 0; i < products.length; i++) {
+        product = products[i];
+        
+        if (product.name.includes(toLookFor)) {
+            toReturn.push(product);
+        }
     }
-    
-    return startTag + elements + endTag; 
+    return toReturn;
 }
-*/
+
 
 
