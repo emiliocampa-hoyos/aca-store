@@ -26,7 +26,7 @@
     <div id="productNamesListId">
         <script>
             var productNamesDOM = document.getElementById('productNamesListId');
-            productNamesDOM.innerHTML = getListOfProductNames();
+            productNamesDOM.innerHTML = "";//getListOfProductNames();
             
 
             function searchForItemView() {
@@ -43,11 +43,12 @@
                 var elements = "";
                 for (var i = 0; i < productsToRender.length; i++) {
                     console.log("Rendering... " + productsToRender[i].name);
-                    elements += "<li> " + productsToRender[i].name + " <button onclick="+'alert()'+">Add To Cart?</button> "
+                    let myProduct = productsToRender[i];
+                    elements += "<li> " + myProduct.name + " <button onclick="+'addToCart('+ myProduct._id +')'+">Add To Cart?</button> "
                             + " <ul>" 
-                            + "<li> Rating: " + productsToRender[i].rating + " </li>"
-                            + "<li> Reviews: " + productsToRender[i].reviews.length + " </li>"
-                            + "<li> Price: " + productsToRender[i].price + " </li>" 
+                            + "<li> Rating: " + myProduct.rating + " </li>"
+                            + "<li> Reviews: " + myProduct.reviews.length + " </li>"
+                            + "<li> Price: " + myProduct.price + " </li>" 
                             + " </ul>" 
                             + " </li>"
                 }
