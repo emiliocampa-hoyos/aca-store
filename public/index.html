@@ -23,7 +23,7 @@
         <button onclick="searchForItemView()">Search</button>
     </div>
 
-    <div id="producgit statustNamesListId">
+    <div id="productNamesListId">
         <script>
             var productNamesDOM = document.getElementById('productNamesListId');
             productNamesDOM.innerHTML = getListOfProductNames();
@@ -35,9 +35,6 @@
             }
 
             function renderItems(productsToRender) {
-                console.log("About to render these: " + productsToRender.name);
-
-
                 var productNamesDOM = document.getElementById('productNamesListId');
                                 
                 var startTag = "<ul>";
@@ -45,6 +42,7 @@
 
                 var elements = "";
                 for (var i = 0; i < productsToRender.length; i++) {
+                    console.log("Rendering... " + productsToRender[i].name);
                     elements += "<li> " + productsToRender[i].name + " <button onclick="+'alert()'+">Add To Cart?</button> "
                             + " <ul>" 
                             + "<li> Rating: " + productsToRender[i].rating + " </li>"
