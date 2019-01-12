@@ -22,14 +22,9 @@
             userActivityCheck = setInterval(isUserActive, timeforNextActivityCheck);
         });
 
-        function resetActiveSession() {
-            console.log("Resetting check for next 5 seconds...");
-            setInterval(isUserActive, timeforNextActivityCheck);
-        }
-
         function isUserActive() {
             console.log("checking user activity...");
-            //userIsActive = confirm("Are you still there?");
+            userIsActive = confirm("Are you still there?");
         }
 
     </script>
