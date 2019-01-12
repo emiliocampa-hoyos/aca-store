@@ -13,7 +13,7 @@
     <script src="view.js"></script>     
 
     <script>
-        var timeforNextActivityCheck = 5000;
+        var timeforNextActivityCheck = 60000;
         var userActivityCheck = setInterval(isUserActive, timeforNextActivityCheck);
         
         document.addEventListener("click", function() {
@@ -29,15 +29,14 @@
 
         function isUserActive() {
             console.log("checking user activity...");
-            userIsActive = confirm("Are you still there?");
+            //userIsActive = confirm("Are you still there?");
         }
 
     </script>
     
     <div id="homeId">
-        <div id="viewCartId">
-            <button onclick="displayCart()">View Cart</button>
-        </div>    
+        <button onclick="displayCart()">View Cart</button>
+        <div id="viewCartId"></div>    
         <br />
         <br />
         <div id="searchBarDivId">
@@ -64,6 +63,27 @@
         <br />
         <b>Cart Items:</b>
         <div id="cartItemsId"></div>
+        <br />
+        <br />
+        <button onclick="displayCheckout()">Checkout</button>
+    </div>
+
+    <div id="checkoutId" hidden="true">
+        <button onclick="displayHome()">Go Home</button>
+        <button onclick="displayCart()">View Cart</button>
+
+        <form name="checkoutForm">
+            First Name: <input type="text" id="firstNameId">
+            <br />
+            Last Name: <input type="text" id="lastNameId">
+            <br />
+            Email: <input type="email" id="emailId">
+            <br />
+            <div id="totalAmountId">
+                Total: $ 0.0
+            </div>
+            <button id="placeOrderId" onclick="alert('Done!')">Place Order</button>
+        </form>
     </div>
     
 </body>

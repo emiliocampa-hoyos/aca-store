@@ -63,6 +63,23 @@ function getProductCategories() {
     return categories;
 }
 
+function getTotalAmountDue() {
+    let myCart = JSON.parse(sessionStorage.getItem("cartItems"));
+
+    if (!myCart) return 0;
+
+    let totalDue = 0;
+
+    for (let i = 0; i < myCart.length; i++) {
+        let price = myCart[i].price.substring(1, myCart[i].length); //Price without $
+        totalDue += parseFloat(price);
+    }
+
+    totalDue = (totalDue * 100) / 100;
+    
+    return totalDue;
+}
+
 
 function clearSession() {
     sessionStorage.clear();

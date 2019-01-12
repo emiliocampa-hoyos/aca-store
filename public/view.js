@@ -61,6 +61,8 @@ function displaySelectedCategoryProducts() {
 function displayHome() {
     let homeDOM = document.getElementById('homeId');
     homeDOM.hidden = false;
+    let checkoutDOM = document.getElementById('checkoutId');
+    checkoutDOM.hidden = true;
     let cartItemsDOM = document.getElementById('cartId');
     cartItemsDOM.hidden = true;
 }
@@ -74,6 +76,8 @@ function clearCart() {
 }
 
 function displayCart() {
+    let checkoutDOM = document.getElementById('checkoutId');
+    checkoutDOM.hidden = true;
     let homeDOM = document.getElementById('homeId');
     homeDOM.hidden = true;
 
@@ -92,4 +96,18 @@ function displayCart() {
     
     let cartDOM = document.getElementById('cartId');
     cartDOM.hidden = false;
+}
+
+
+function displayCheckout() {
+    let total = getTotalAmountDue();
+    
+    let homeDOM = document.getElementById('homeId');
+    homeDOM.hidden = true;
+    let cartDOM = document.getElementById('cartId');
+    cartDOM.hidden = true;
+    let checkoutDOM = document.getElementById('checkoutId');
+    checkoutDOM.hidden = false;
+    let totalAmountDueDOM = document.getElementById("totalAmountId");
+    totalAmountDueDOM.innerText = "Total: $" + total;
 }
