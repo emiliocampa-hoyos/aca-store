@@ -7,57 +7,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
 </head>
-<body>
-    <script src="products.js"></script>    
+<body id="bodyId">
+    <script src="products.js"></script> 
     <script src="index.js"></script>  
+    <script src="view.js"></script>     
 
+    <script>
+        var timeforNextActivityCheck = 5000;
+        var userActivityCheck = setInterval(isUserActive, timeforNextActivityCheck);
+        
+        document.addEventListener("click", function() {
+            console.log("clearing session and restarting countdown...");
+            clearInterval(userActivityCheck);
+            userActivityCheck = setInterval(isUserActive, timeforNextActivityCheck);
+        });
+
+        function resetActiveSession() {
+            console.log("Resetting check for next 5 seconds...");
+            setInterval(isUserActive, timeforNextActivityCheck);
+        }
+
+        function isUserActive() {
+            console.log("checking user activity...");
+            userIsActive = confirm("Are you still there?");
+        }
+
+    </script>
     
+    <div id="homeId">
+        <div id="viewCartId">
+            <button onclick="displayCart()">View Cart</button>
+        </div>    
+        <br />
+        <br />
+        <div id="searchBarDivId">
+            <b>Search for an Item:</b>
+            <input type="text" name="searchBar" id="searchBarId" onkeyup="searchForItemView()">
+            <br />
+            <br />
+            <b>Choose:</b>
+            <select id="categoryId" name="category" onchange="displaySelectedCategoryProducts()">
+                <script>
+                    displayCategoryDropDown();
+                </script>
+            </select>
+        </div>
 
-    <div id="viewCartId">
-        <button onclick="alert('view the cart')">View Cart</button>
-    </div>    
-
-    <div id="searchBarDivId">
-        <b>Search for an Item:</b>
-        <input type="text" name="searchBar" id="searchBarId">
-        <button onclick="searchForItemView()">Search</button>
+        <div id="productNamesListId">
+          
+        </div>
     </div>
 
-    <div id="productNamesListId">
-        <script>
-            var productNamesDOM = document.getElementById('productNamesListId');
-            productNamesDOM.innerHTML = "";//getListOfProductNames();
-            
-
-            function searchForItemView() {
-                var toLookFor = document.getElementById('searchBarId').value;
-                renderItems(GetItems(toLookFor));
-            }
-
-            function renderItems(productsToRender) {
-                var productNamesDOM = document.getElementById('productNamesListId');
-                                
-                var startTag = "<ul>";
-                var endTag = "</ul>";
-
-                var elements = "";
-                for (var i = 0; i < productsToRender.length; i++) {
-                    console.log("Rendering... " + productsToRender[i].name);
-                    let myProduct = productsToRender[i];
-                    elements += "<li> " + myProduct.name + " <button onclick="+'addToCart('+ myProduct._id +')'+">Add To Cart?</button> "
-                            + " <ul>" 
-                            + "<li> Rating: " + myProduct.rating + " </li>"
-                            + "<li> Reviews: " + myProduct.reviews.length + " </li>"
-                            + "<li> Price: " + myProduct.price + " </li>" 
-                            + " </ul>" 
-                            + " </li>"
-                }
-                
-                productNamesDOM.innerHTML = startTag + elements + endTag; 
-            }
-        </script>
+    <div id="cartId" name="cart" hidden="true">
+        <button onclick="displayHome()">Go Home</button>
+        <button onclick="clearCart()">Clear Cart</button>
+        <br />
+        <b>Cart Items:</b>
+        <div id="cartItemsId"></div>
     </div>
-
     
 </body>
 </html>
