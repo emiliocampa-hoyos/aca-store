@@ -74,7 +74,6 @@ function getTotalAmountDue() {
         let price = myCart[i].price.substring(1, myCart[i].length); //Price without $
         totalDue += parseFloat(price);
     }
-
     totalDue = (totalDue * 100) / 100;
     
     return totalDue;
